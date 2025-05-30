@@ -14,20 +14,9 @@ It would just slow you down! You already know binary pretty well! Python would j
 
 To drive the point home, Python, for example, is an interpreted language . It goes from:
 
-```python
-print(“Hello, world!”)
+```markdown
+Python Source → Bytecode → Python VM → Machine Code → CPU Execution
 ```
-
-To bytecode (your favorite .pyc file):
-
-```python
-LOAD_GLOBAL              0 (print)
-LOAD_CONST               1 ('Hello, world!')
-…
-```
-
-Which Python's (interpreter translates to bytecode)[https://stackoverflow.com/questions/10821875/how-could-i-write-hello-world-in-binary]
-at runtime.
 
 That's lots of steps just so humans can create some binary!
 Now let's add an additional abstraction on top— AI. So on top of our stack above, we've added two more steps:
