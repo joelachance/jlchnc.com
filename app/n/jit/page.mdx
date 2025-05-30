@@ -1,0 +1,79 @@
+# JIT Programming
+
+Over the last couple of days, I've been following Garry Tan's X posts about the idea of 'Just in time' programming.
+This is the concept that AI will support creation of software without humans in the loop.
+
+I've been thinking about this before it's started to pop up online, because it seems like if AI
+is going to completely and reliably automate software creation, then using Javascript for example,
+the most error prone of languages, might not be the best tool.
+
+Let's step back for a moment— why programming languages in the first place?
+Programming languages have always been an interface between a human and machine code.
+If humans were really good at writing binary, it doesn't make a lot of sense to create the abstraction that is Python, for example.
+It would just slow you down! You already know binary pretty well! Python would just be annoying at that point.
+
+To drive the point home, Python, for example, is an interpreted language . It goes from:
+
+```python
+print(“Hello, world!”)
+```
+
+To bytecode (your favorite .pyc file):
+
+```python
+LOAD_GLOBAL              0 (print)
+LOAD_CONST               1 ('Hello, world!')
+…
+```
+
+Which Python's (interpreter translates to bytecode)[https://stackoverflow.com/questions/10821875/how-could-i-write-hello-world-in-binary]
+at runtime.
+
+That's lots of steps just so humans can create some binary!
+Now let's add an additional abstraction on top— AI. So on top of our stack above, we've added two more steps:
+
+1. Natural language prompts (i.e. English)
+2. LLM predictions: the LLM predicts the next word in a sequence, based on patterns
+it's learned from enormous amounts of data. It 'predicts' your request in Python, in other words.
+
+## Could improvements be made? How can we get to JIT?
+This is the thought experiment I'm most interested in. If JIT is a solid use-case for AI (and I'd argue it is),
+then shouldn't we try to reduce those 5 steps? Because presumably there would be less chance of error.
+
+First, we can't really 'improve' the natural language step. English is my native language, and it's
+fraught with slang and implicit meaning. Computers don't tend to get sarcasm, for example,
+so English alone isn't really a good analog for binary. 'We can always count on the Americans to do the right thing,
+after they have exhausted all the other possibilities', doesn't exactly scream 1s and 0s, although to it's credit,
+LLMs are doing a pretty damn good job figuring out that Winston Churchill was one sarcastic guy.
+
+So what can we simplify? The n steps on the programming language side seem ripe for reinvention!
+Who knows what this will really look like, but here's some speculation on what requirements we should start with:
+
+### 1. Simple Syntax
+The more complex the syntax is, the more prediction that has to be done, and the idea here is that
+I can integrate Stripe by saying 'integrate Stripe bro' into an LLM and it does it.
+If it's writing classes and private methods to get there, we've probably veered off course.
+
+### 2. Safety & Validation
+This 'new language' should fully bake in error handling and validation.
+You can add that try/catch block to your Javascript if you're writing software for SpaceX,
+or you can skip it and YOLO your next deployment. We can't afford that here, 
+since we need instant iteration if this LLM-generated software fails.
+
+### 3. Rapid Iteration & Deployment
+Right now the ecosystem between building websites locally then going through the deployment process is
+heavy, very manual, and kind of painful. Whatever system emerges needs to have deployment completely solved for,
+along with monitoring and observability. Disclosure: I'm building an agentic DevOps platform to solve for this: trydeepspace.com
+
+### 4. Solves for data
+As far as I know, I have not found a product to generate a database migration for you and run your migration.
+The frontend ecosystem has adopted AI much more quickly, and backend systems have some catching up to do. 
+This system needs to support data natively and make this look easy.
+
+## Conclusion - TL;DR
+There's currently a lot of steps to turn natural language into code that compiles. We still need to
+validate our vibe coded solutions since they aren't perfect, but I believe there's a new language out
+there waiting to be written that makes this a lot easier for LLMs (some high level requirements above if you're curious).
+If we can apply simplicity here, along with improvements around infrastructure, we'll really be cooking.
+
+

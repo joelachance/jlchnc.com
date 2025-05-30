@@ -7,15 +7,15 @@ import { unstable_ViewTransition as ViewTransition } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://leerob.com'),
+  metadataBase: new URL('https://jlchnc.com'),
   alternates: {
     canonical: '/'
   },
   title: {
-    default: 'Lee Robinson',
-    template: '%s | Lee Robinson'
+    default: 'Joe LaChance',
+    template: '%s | Joe LaChance'
   },
-  description: 'Frontend developer, optimist, community builder.'
+  description: 'Founder and developer.'
 };
 
 export default function RootLayout({
@@ -40,10 +40,8 @@ export default function RootLayout({
 
 function Footer() {
   const links = [
-    { name: '@leerob', url: 'https://x.com/leerob' },
-    { name: 'youtube', url: 'https://www.youtube.com/@leerob' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/leeerob' },
-    { name: 'github', url: 'https://github.com/leerob' }
+    { name: '@jlchnc', url: 'https://x.com/jlchnc' },
+    { name: 'github', url: 'https://github.com/joelachance' }
   ];
 
   return (
