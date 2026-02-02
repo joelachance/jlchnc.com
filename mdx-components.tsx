@@ -1,6 +1,7 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
+import type { MDXComponents } from 'mdx/types';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -9,7 +10,7 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-const components = {
+const components: MDXComponents = {
   h1: (props: HeadingProps) => (
     <h1 className="font-medium pt-12 mb-0" {...props} />
   ),
@@ -81,26 +82,6 @@ const components = {
     const codeHTML = highlight(children as string);
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
-  Table: ({ data }: { data: { headers: string[]; rows: string[][] } }) => (
-    <table>
-      <thead>
-        <tr>
-          {data.headers.map((header, index) => (
-            <th key={index}>{header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.rows.map((row, index) => (
-          <tr key={index}>
-            {row.map((cell, cellIndex) => (
-              <td key={cellIndex}>{cell}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote
       className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700 dark:border-zinc-600 dark:text-zinc-300"
@@ -109,10 +90,11 @@ const components = {
   ),
 };
 
-declare global {
-  type MDXProvidedComponents = typeof components;
-}
-
-export function useMDXComponents(): MDXProvidedComponents {
-  return components;
+export function useMDXComponents(
+  mdxComponents: MDXComponents = {}
+): MDXComponents {
+  return {
+    ...mdxComponents,
+    ...components
+  };
 }
