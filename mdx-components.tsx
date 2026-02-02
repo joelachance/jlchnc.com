@@ -1,6 +1,7 @@
-import React, { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import Link from 'next/link';
 import { highlight } from 'sugar-high';
+import type { MDXComponents } from 'mdx/types';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -9,7 +10,7 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-const components = {
+const components: MDXComponents = {
   h1: (props: HeadingProps) => (
     <h1 className="font-medium pt-12 mb-0" {...props} />
   ),
@@ -89,10 +90,11 @@ const components = {
   ),
 };
 
-declare global {
-  type MDXProvidedComponents = typeof components;
-}
-
-export function useMDXComponents(): MDXProvidedComponents {
-  return components;
+export function useMDXComponents(
+  mdxComponents: MDXComponents = {}
+): MDXComponents {
+  return {
+    ...mdxComponents,
+    ...components
+  };
 }
