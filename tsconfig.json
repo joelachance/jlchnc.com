@@ -37,6 +37,6 @@
   ],
   "exclude": [
     "node_modules",
-    "app/n/ai/*.tsx"
+    "app/essays/ai/*.tsx"
   ]
 }
