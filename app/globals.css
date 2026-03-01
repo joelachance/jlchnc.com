@@ -3,6 +3,7 @@
 @theme {
   --font-family-sans: var(--font-geist-mono);
   --font-family-mono: var(--font-geist-mono);
+  --font-family-berkeley-mono: var(--font-berkeley-mono);
 }
 
 :root {
@@ -19,6 +20,7 @@
 html {
   min-width: 360px;
   scrollbar-gutter: stable;
+  font-size: 14px;
 }
 
 body {

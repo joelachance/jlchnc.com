@@ -1,7 +1,7 @@
 export function Name() {
   return (
     <>
-      <h1 className="font-medium pt-12">
+      <h1 className="font-berkeley-mono font-sm pt-12 uppercase" style={{ }}>
         <span className="sr-only">Joe LaChance</span>
         <span
           aria-hidden="true"

@@ -1,10 +1,15 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
+const berkeleyMono = localFont({
+  src: '../public/fonts/BerkeleyMonoVariable.otf',
+  variable: '--font-berkeley-mono'
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://jlchnc.com'),
@@ -15,7 +20,7 @@ export const metadata: Metadata = {
     default: 'Joe LaChance',
     template: '%s | Joe LaChance'
   },
-  description: 'Founder and developer.'
+  description: 'Founder and father.'
 };
 
 export default function RootLayout({
@@ -24,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${geistMono.className}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-zinc-950`}>
       <body className="antialiased tracking-tight">
         <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
           <main className="max-w-[60ch] mx-auto w-full space-y-6">
