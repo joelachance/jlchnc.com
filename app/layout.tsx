@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     default: 'Joe LaChance',
     template: '%s | Joe LaChance'
   },
-  description: 'Founder and father.'
+  description: 'A founder and creative building developer tools for AI.'
 };
 
 export default function RootLayout({
