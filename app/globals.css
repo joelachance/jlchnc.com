@@ -200,3 +200,31 @@ table {
     opacity: 0;
   }
 }
+
+/*
+  Selection must be last and use !important + enough specificity to beat:
+  - sugar-high inline `style="color: var(--sh-…)"` on token spans
+  - `pre code > span .sh__token--… { color: … !important }` in this file
+  - Tailwind link colors (`a.text-blue-500`, etc.)
+*/
+html ::selection,
+html ::-moz-selection {
+  background-color: #99f6e4 !important;
+  color: #134e4a !important;
+}
+
+/* Inline + block code tokens (sugar-high) — specificity > token !important rules */
+pre code span[class^='sh__token--']::selection,
+pre code span[class^='sh__token--']::-moz-selection,
+code span[class^='sh__token--']::selection,
+code span[class^='sh__token--']::-moz-selection {
+  background-color: #99f6e4 !important;
+  color: #134e4a !important;
+}
+
+/* Links: utility classes on <a> otherwise keep selected text blue */
+a[class]::selection,
+a[class]::-moz-selection {
+  background-color: #99f6e4 !important;
+  color: #134e4a !important;
+}
