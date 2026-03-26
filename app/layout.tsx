@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className="antialiased tracking-tight">
         <ThemeProviderWrapper>
           <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
-            <main className="max-w-[60ch] mx-auto w-full space-y-6">
+            <main className="max-w-[60ch] w-full self-start space-y-2">
               {children}
             </main>
             <Footer />
@@ -58,15 +58,15 @@ function Footer() {
   ];
 
   return (
-    <footer className="mt-12 text-center">
-      <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 tracking-tight">
+    <footer className="mt-12 text-left">
+      <div className="flex justify-start items-center flex-wrap gap-x-4 gap-y-2 tracking-tight">
         {links.map((link) => (
           <a
             key={link.name}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors duration-200"
+            className="text-gray-400 dark:text-gray-500 hover:!text-[#c4716a] dark:hover:!text-[#e8a598] transition-colors duration-200"
           >
             {link.name}
           </a>

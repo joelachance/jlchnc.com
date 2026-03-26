@@ -50,18 +50,20 @@ const components: MDXComponents = {
     <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className =
-      'text-blue-500 hover:text-blue-700 dark:text-gray-400 hover:dark:text-gray-300 dark:underline dark:underline-offset-2 dark:decoration-gray-800';
+    const externalClassName =
+      'text-[#c4716a] hover:!text-[#a14a42] dark:text-[#e8a598] dark:hover:!text-[#f5d0c8] dark:underline dark:underline-offset-2 dark:decoration-[#6b2d2e]/45';
+    const internalClassName =
+      'text-[#c4716a] dark:text-[#e8a598] hover:!text-[#a14a42] dark:hover:!text-[#f5d0c8] hover:underline hover:underline-offset-2';
     if (href?.startsWith('/')) {
       return (
-        <Link href={href} className={className} {...props}>
+        <Link href={href} className={internalClassName} {...props}>
           {children}
         </Link>
       );
     }
     if (href?.startsWith('#')) {
       return (
-        <a href={href} className={className} {...props}>
+        <a href={href} className={internalClassName} {...props}>
           {children}
         </a>
       );
@@ -71,7 +73,7 @@ const components: MDXComponents = {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={className}
+        className={externalClassName}
         {...props}
       >
         {children}
