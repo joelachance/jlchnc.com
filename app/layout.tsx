@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
+import { ThemeProviderWrapper } from './theme-provider';
+import { ThemeToggle } from './theme-toggle';
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
@@ -29,15 +31,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-zinc-950`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-white`}
+    >
       <body className="antialiased tracking-tight">
-        <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
-          <main className="max-w-[60ch] mx-auto w-full space-y-6">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
-        </div>
+        <ThemeProviderWrapper>
+          <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
+            <main className="max-w-[60ch] mx-auto w-full space-y-6">
+              {children}
+            </main>
+            <Footer />
+            <Analytics />
+          </div>
+        </ThemeProviderWrapper>
       </body>
     </html>
   );
@@ -51,7 +59,7 @@ function Footer() {
 
   return (
     <footer className="mt-12 text-center">
-      <div className="flex justify-center space-x-4 tracking-tight">
+      <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 tracking-tight">
         {links.map((link) => (
           <a
             key={link.name}
@@ -63,6 +71,7 @@ function Footer() {
             {link.name}
           </a>
         ))}
+        <ThemeToggle />
       </div>
     </footer>
   );
