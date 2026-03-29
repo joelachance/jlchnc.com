@@ -1,9 +1,8 @@
 const PHRASES = [
   "Shipping since the 80's",
-  "Still compiling, still shipping",
-  "Production is a social construct",
-  "It worked on my machine™",
-  "Ship first, ask questions never",
+  "Building mostly harmless software",
+  "Third worst engineer in the world",
+  "Trying to make the web a little bit better",
 ] as const;
 
 export function Tagline() {
