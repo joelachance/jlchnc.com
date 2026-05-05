@@ -60,9 +60,8 @@ function Footer() {
   return (
     <footer className="mt-12 text-left">
       <div className="flex justify-start items-center flex-wrap gap-x-4 gap-y-2 tracking-tight">
-        <span className="text-gray-400 dark:text-gray-500">
-          © {new Date().getFullYear()} Joe LaChance
-        </span>
+        <ThemeToggle />
+        <div className="mr-12" />
         {links.map((link) => (
           <a
             key={link.name}
@@ -74,7 +73,9 @@ function Footer() {
             {link.name}
           </a>
         ))}
-        <ThemeToggle />
+        <span className="text-xs text-gray-400 dark:text-gray-500">
+          © {new Date().getFullYear()} Joe LaChance
+        </span>
       </div>
     </footer>
   );
