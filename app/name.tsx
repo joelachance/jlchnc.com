@@ -1,3 +1,5 @@
+import { GeistPixelSquare } from 'geist/font/pixel';
+
 export function Name() {
   return (
     <>
@@ -7,7 +9,7 @@ export function Name() {
           aria-hidden="true"
           className="block overflow-hidden group relative"
         >
-          <span className="inline-block whitespace-nowrap">
+          <span className={`${GeistPixelSquare.className} inline-block whitespace-nowrap`}>
             {'Joe LaChance'}
           </span>
         </span>
