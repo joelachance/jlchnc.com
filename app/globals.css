@@ -234,7 +234,7 @@ table {
 */
 html ::selection,
 html ::-moz-selection {
-  background-color: #99f6e4 !important;
+  background-color: #5fd7bf !important;
   color: #134e4a !important;
 }
 
@@ -243,14 +243,14 @@ pre code span[class^='sh__token--']::selection,
 pre code span[class^='sh__token--']::-moz-selection,
 code span[class^='sh__token--']::selection,
 code span[class^='sh__token--']::-moz-selection {
-  background-color: #99f6e4 !important;
+  background-color: #5fd7bf !important;
   color: #134e4a !important;
 }
 
 /* Links: mint highlight; near-black text (reads clearly on mint vs. light link color) */
 a[class]::selection,
 a[class]::-moz-selection {
-  background-color: #99f6e4 !important;
+  background-color: #5fd7bf !important;
   color: #101828 !important;
   -webkit-text-fill-color: #101828 !important;
 }
@@ -258,6 +258,6 @@ a[class]::-moz-selection {
 /* Links: use the same mint as highlight for hover */
 a[href]:hover,
 a[href]:focus-visible {
-  color: #99f6e4 !important;
-  -webkit-text-fill-color: #99f6e4 !important;
+  color: #5fd7bf !important;
+  -webkit-text-fill-color: #5fd7bf !important;
 }
