@@ -51,9 +51,9 @@ const components: MDXComponents = {
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const externalClassName =
-      'text-[#c4716a] hover:!text-[#a14a42] dark:text-[#e8a598] dark:hover:!text-[#f5d0c8] dark:underline dark:underline-offset-2 dark:decoration-[#6b2d2e]/45';
+      'text-[#5fd7bf] hover:!text-[#a14a42] dark:text-[#5fd7bf] dark:hover:!text-[#f5d0c8] dark:underline dark:underline-offset-2 dark:decoration-[#6b2d2e]/45';
     const internalClassName =
-      'text-[#c4716a] dark:text-[#e8a598] hover:!text-[#a14a42] dark:hover:!text-[#f5d0c8] hover:underline hover:underline-offset-2';
+      'text-[#5fd7bf] dark:text-[#5fd7bf] hover:!text-[#a14a42] dark:hover:!text-[#f5d0c8] hover:underline hover:underline-offset-2';
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={internalClassName} {...props}>
