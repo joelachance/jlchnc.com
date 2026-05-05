@@ -9,7 +9,9 @@ export function Name() {
           aria-hidden="true"
           className="block overflow-hidden group relative"
         >
-          <span className={`${GeistPixelLine.className} inline-block whitespace-nowrap text-5xl`}>
+          <span
+            className={`${GeistPixelLine.className} inline-block whitespace-nowrap text-4xl sm:text-5xl`}
+          >
             {'jlchnc'}
           </span>
         </span>

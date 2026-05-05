@@ -19,10 +19,13 @@ export const metadata: Metadata = {
     canonical: '/'
   },
   title: {
-    default: 'Joe LaChance',
-    template: '%s | Joe LaChance'
+    default: 'jlchnc',
+    template: '%s | jlchnc'
   },
-  description: 'A founder and creative building developer tools for AI.'
+  description: 'Joe LaChance\'s personal website',
+  icons: {
+    icon: '/favicon.ico'
+  }
 };
 
 export default function RootLayout({
@@ -34,11 +37,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-white`}
+      className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-white antialiased tracking-tight page-fade-in min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-6 sm:p-8 md:ml-[5vw] dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200`}
     >
-      <body className="antialiased tracking-tight">
+      <body>
         <ThemeProviderWrapper>
-          <div className="min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-8 dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200">
+          <div>
             <main className="max-w-[60ch] w-full self-start space-y-2">
               {children}
             </main>
@@ -74,7 +77,7 @@ function Footer() {
           </a>
         ))}
         <span className="text-xs text-gray-400 dark:text-gray-500">
-          © {new Date().getFullYear()} Joe LaChance
+          © {new Date().getFullYear()}
         </span>
       </div>
     </footer>

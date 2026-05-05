@@ -201,6 +201,31 @@ table {
   }
 }
 
+.page-fade-in {
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: page-fade-in 500ms ease-out forwards;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /*
   Selection must be last and use !important + enough specificity to beat:
   - sugar-high inline `style="color: var(--sh-…)"` on token spans
