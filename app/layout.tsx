@@ -71,7 +71,7 @@ function Footer() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 dark:text-gray-500 hover:!text-[#c4716a] dark:hover:!text-[#e8a598] transition-colors duration-200"
+            className="text-gray-400 dark:text-gray-500 hover:!text-[#99f6e4] dark:hover:!text-[#99f6e4] transition-colors duration-200"
           >
             {link.name}
           </a>

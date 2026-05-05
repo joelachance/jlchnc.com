@@ -254,3 +254,10 @@ a[class]::-moz-selection {
   color: #101828 !important;
   -webkit-text-fill-color: #101828 !important;
 }
+
+/* Links: use the same mint as highlight for hover */
+a[href]:hover,
+a[href]:focus-visible {
+  color: #99f6e4 !important;
+  -webkit-text-fill-color: #99f6e4 !important;
+}
