@@ -9,6 +9,8 @@
 }
 
 :root {
+  --accent-mint: #5fd7bf;
+  --accent-mint-ink: #134e4a;
   --sh-class: #7aa2f7;
   --sh-sign: #89ddff;
   --sh-string: #9ece6a;
@@ -234,8 +236,8 @@ table {
 */
 html ::selection,
 html ::-moz-selection {
-  background-color: #5fd7bf !important;
-  color: #134e4a !important;
+  background-color: var(--accent-mint) !important;
+  color: var(--accent-mint-ink) !important;
 }
 
 /* Inline + block code tokens (sugar-high) — specificity > token !important rules */
@@ -243,14 +245,14 @@ pre code span[class^='sh__token--']::selection,
 pre code span[class^='sh__token--']::-moz-selection,
 code span[class^='sh__token--']::selection,
 code span[class^='sh__token--']::-moz-selection {
-  background-color: #5fd7bf !important;
-  color: #134e4a !important;
+  background-color: var(--accent-mint) !important;
+  color: var(--accent-mint-ink) !important;
 }
 
 /* Links: mint highlight; near-black text (reads clearly on mint vs. light link color) */
 a[class]::selection,
 a[class]::-moz-selection {
-  background-color: #5fd7bf !important;
+  background-color: var(--accent-mint) !important;
   color: #101828 !important;
   -webkit-text-fill-color: #101828 !important;
 }
@@ -258,6 +260,6 @@ a[class]::-moz-selection {
 /* Links: use the same mint as highlight for hover */
 a[href]:hover,
 a[href]:focus-visible {
-  color: #5fd7bf !important;
-  -webkit-text-fill-color: #5fd7bf !important;
+  color: var(--accent-mint) !important;
+  -webkit-text-fill-color: var(--accent-mint) !important;
 }
