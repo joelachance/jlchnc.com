@@ -3,8 +3,7 @@ import { GeistPixelLine } from 'geist/font/pixel';
 export function Name() {
   return (
     <>
-      <h1 className="font-sm pt-12">
-        <span className="sr-only">Joe LaChance</span>
+      <h1 className="font-sm">
         <span
           aria-hidden="true"
           className="block overflow-hidden group relative"
@@ -12,7 +11,7 @@ export function Name() {
           <span
             className={`${GeistPixelLine.className} inline-block whitespace-nowrap text-4xl sm:text-5xl`}
           >
-            {'jlchnc'}
+            joe lachance
           </span>
         </span>
       </h1>

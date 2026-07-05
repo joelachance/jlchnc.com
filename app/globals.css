@@ -9,8 +9,13 @@
 }
 
 :root {
-  --accent-mint: #5fd7bf;
-  --accent-mint-ink: #134e4a;
+  --accent-magenta: #e879f9;
+  --accent-magenta-ink: #581c87;
+  --link-color: #2563eb;
+  --link-color-hover: #1d4ed8;
+  --content-max-width: min(100%, max(50vw, 960px));
+  --thesis-content-max-width: 42rem;
+  --header-height: 200px;
   --sh-class: #7aa2f7;
   --sh-sign: #89ddff;
   --sh-string: #9ece6a;
@@ -19,6 +24,11 @@
   --sh-jsxliterals: #7aa2f7;
   --sh-property: #73daca;
   --sh-entity: #e0af68;
+}
+
+.dark {
+  --link-color: #60a5fa;
+  --link-color-hover: #93c5fd;
 }
 
 html {
@@ -228,6 +238,301 @@ table {
   }
 }
 
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.header-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.site-title-row {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-title-row:hover,
+.site-title-row:focus-visible {
+  color: inherit !important;
+  text-decoration: none !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+.site-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 8px;
+}
+
+.site-meta-line {
+  line-height: 1.2;
+}
+
+.site-meta-muted {
+  color: #9ca3af;
+}
+
+.dark .site-meta-muted {
+  color: #6b7280;
+}
+
+.site-meta-sep {
+  opacity: 0.45;
+  user-select: none;
+}
+
+.site-social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.dark .site-social-links {
+  color: #a3a3a3;
+}
+
+.site-social-links a {
+  color: var(--link-color) !important;
+  -webkit-text-fill-color: var(--link-color) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.site-social-links a:hover,
+.site-social-links a:focus-visible {
+  color: var(--link-color-hover) !important;
+  -webkit-text-fill-color: var(--link-color-hover) !important;
+}
+
+.essay-main {
+  max-width: var(--thesis-content-max-width);
+}
+
+.essay-main:has(.thesis-section) {
+  max-width: var(--content-max-width);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  max-width: var(--thesis-content-max-width);
+  font-size: 12px;
+}
+
+@media (min-width: 640px) {
+  .home-grid {
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+.home-grid-meta {
+  opacity: 0.7;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.home-grid-date {
+  color: var(--accent-magenta);
+  margin-top: 1px;
+}
+
+.home-grid-link {
+  min-width: 0;
+}
+
+.thesis-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.thesis-stage {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.thesis-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.thesis-panel {
+  position: relative;
+  padding: 0 0 3.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0.38;
+  transition: opacity 0.35s ease;
+}
+
+.thesis-panel--active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thesis-panel {
+    transition: opacity 0.15s ease;
+  }
+}
+
+.thesis-panel-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--thesis-content-max-width);
+  text-align: left;
+}
+
+.thesis-panel-inner--split {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 5.5rem);
+  max-width: none;
+  width: 100%;
+}
+
+.thesis-panel-inner--split .thesis-panel-main {
+  flex: 0 0 auto;
+  width: var(--thesis-content-max-width);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.thesis-panel-notes {
+  flex: 0 1 var(--thesis-content-max-width);
+  min-width: 0;
+  max-width: var(--thesis-content-max-width);
+  margin-left: auto;
+  position: sticky;
+  top: calc(var(--header-height) + 0.75rem);
+}
+
+@media (min-width: 52.0625rem) {
+  .thesis-panel:not(.thesis-panel--active) .thesis-panel-notes {
+    display: none;
+  }
+}
+
+@media (max-width: 52rem) {
+  .thesis-panels {
+    gap: 3.75rem;
+  }
+
+  .thesis-panel {
+    padding-bottom: 5rem;
+  }
+
+  .thesis-panel-inner--split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .thesis-panel-inner--split .thesis-panel-main {
+    width: 100%;
+  }
+
+  .thesis-panel-inner--split .thesis-panel-notes {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    position: static;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #e2e8f0;
+    display: block;
+  }
+
+  .dark .thesis-panel-inner--split .thesis-panel-notes {
+    border-top-color: #3f3f46;
+  }
+
+  .thesis-panel:not(.thesis-panel--active) .thesis-panel-notes {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .thesis-panel--active .thesis-panel-notes {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.thesis-panel-heading {
+  margin: 0 0 1.25rem;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.thesis-panel-body p {
+  margin: 0 0 1rem;
+  max-width: 100%;
+}
+
+.thesis-panel-body p:last-child {
+  margin-bottom: 0;
+}
+
+.thesis-fn-ref {
+  font-size: 0.68em;
+  line-height: 1;
+  vertical-align: super;
+  color: var(--accent-magenta);
+  text-decoration: none;
+}
+
+.thesis-footnotes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1.45;
+  color: #64748b;
+  counter-reset: thesis-fn;
+  width: 100%;
+}
+
+.dark .thesis-footnotes {
+  color: #a3a3a3;
+}
+
+.thesis-footnotes li {
+  margin: 0 0 0.65rem;
+  padding: 0 0 0 1.35rem;
+  position: relative;
+}
+
+.thesis-footnotes li::before {
+  content: counter(thesis-fn) '.';
+  counter-increment: thesis-fn;
+  position: absolute;
+  left: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.thesis-fn-text p {
+  margin: 0;
+  display: inline;
+}
+
 /*
   Selection must be last and use !important + enough specificity to beat:
   - sugar-high inline `style="color: var(--sh-…)"` on token spans
@@ -236,8 +541,8 @@ table {
 */
 html ::selection,
 html ::-moz-selection {
-  background-color: var(--accent-mint) !important;
-  color: var(--accent-mint-ink) !important;
+  background-color: var(--accent-magenta) !important;
+  color: var(--accent-magenta-ink) !important;
 }
 
 /* Inline + block code tokens (sugar-high) — specificity > token !important rules */
@@ -245,21 +550,27 @@ pre code span[class^='sh__token--']::selection,
 pre code span[class^='sh__token--']::-moz-selection,
 code span[class^='sh__token--']::selection,
 code span[class^='sh__token--']::-moz-selection {
-  background-color: var(--accent-mint) !important;
-  color: var(--accent-mint-ink) !important;
+  background-color: var(--accent-magenta) !important;
+  color: var(--accent-magenta-ink) !important;
 }
 
-/* Links: mint highlight; near-black text (reads clearly on mint vs. light link color) */
+/* Links: magenta highlight; near-black text (reads clearly on magenta vs. light link color) */
 a[class]::selection,
 a[class]::-moz-selection {
-  background-color: var(--accent-mint) !important;
+  background-color: var(--accent-magenta) !important;
   color: #101828 !important;
   -webkit-text-fill-color: #101828 !important;
 }
 
-/* Links: use the same mint as highlight for hover */
+a[href] {
+  color: var(--link-color) !important;
+  -webkit-text-fill-color: var(--link-color) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 a[href]:hover,
 a[href]:focus-visible {
-  color: var(--accent-mint) !important;
-  -webkit-text-fill-color: var(--accent-mint) !important;
+  color: var(--link-color-hover) !important;
+  -webkit-text-fill-color: var(--link-color-hover) !important;
 }
