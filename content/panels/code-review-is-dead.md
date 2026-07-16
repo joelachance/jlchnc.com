@@ -1,6 +1,6 @@
 ---
 title: Code Review is Dead
-date: 2026-02-28
+date: 2026-07-16
 slug: code-review-is-dead
 category: Writing
 ---

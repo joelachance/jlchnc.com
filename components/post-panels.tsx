@@ -23,7 +23,8 @@ export function PostPanels({ sections }: PostPanelsProps) {
       const baseY =
         anchorYRef.current ??
         (header ? header.getBoundingClientRect().height + 64 : 120);
-      const anchorY = Math.min(baseY + 80 + vh * 0.07, vh * 0.72);
+      // Activate near mid-viewport so active sections sit toward center.
+      const anchorY = Math.min(baseY + 40 + vh * 0.05, vh * 0.5);
 
       let active = panels[0];
       for (const panel of panels) {
@@ -32,8 +33,18 @@ export function PostPanels({ sections }: PostPanelsProps) {
         }
       }
 
+      // scrollY often stops a few px short of the absolute end
+      const remaining =
+        document.documentElement.scrollHeight -
+        window.scrollY -
+        window.innerHeight;
+      if (remaining <= 32) {
+        active = panels[panels.length - 1];
+      }
+
       const sy = window.scrollY;
       if (sy < 24) {
+        active = panels[0];
         anchorYRef.current = panels[0].getBoundingClientRect().top;
       }
 
@@ -52,10 +63,16 @@ export function PostPanels({ sections }: PostPanelsProps) {
     };
 
     const onScroll = () => pickActive();
+    const onResize = () => pickActive();
+
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
     pickActive();
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, [sections]);
 
   return (
@@ -95,6 +112,7 @@ export function PostPanels({ sections }: PostPanelsProps) {
               </article>
             );
           })}
+          <div className="thesis-panels-end" aria-hidden="true" />
         </div>
       </div>
     </section>

@@ -372,6 +372,14 @@ table {
   width: 100%;
 }
 
+.thesis-panels-end {
+  flex: none;
+  /* Enough room for the last panels to scroll up through the mid-viewport anchor */
+  height: 60vh;
+  min-height: 24rem;
+  pointer-events: none;
+}
+
 .thesis-panel {
   position: relative;
   padding: 0 0 3.5rem;
