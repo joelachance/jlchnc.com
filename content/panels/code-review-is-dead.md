@@ -45,11 +45,11 @@ The downside to this method is that copying and pasting takes time.
 
 This next one is important: your blast radius.
 
-What’s your blast radius, you say? Your blast radius determines how much your new code changes affect the critical path. Does this touch happy paths, major UI, security, or architecture? Is there a database migration hidden in those changes somewhere? Did you accidentally poison your codebase?[^blast-radius]
+What’s your blast radius, you say? Your blast radius determines how much your new code changes affect the critical path. Does this touch happy paths, major UI, security, or architecture? Is there a database migration hidden in those changes somewhere? Did you accidentally poison your codebase?[^poison-your-codebase]
 
 The blast radius is what dictates whether you really need to review. Maybe you’re just updating docs and you’re itching to yolo these changes to prod. But maybe you’re migrating from RDS to PlanetScale, and you should give this one a quick glance, intern.
 
-[^blast-radius]: Mitchell Hashimoto on measuring the blast radius of AI-generated code: [“It's very clear that lines of code is not a useful metric.”](https://x.com/mitchellh/status/2067970516951150721?s=20)
+[^poison-your-codebase]: Finding AI-generated PRs: [“Mitchell Hashimoto on poisoning his AGENTS.md”](https://x.com/mitchellh/status/2067970516951150721?s=20)
 
 ## Ask questions
 
