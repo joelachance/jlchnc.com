@@ -348,6 +348,23 @@ table {
   margin-top: 1px;
 }
 
+/* Home page: dates only on mouseover of the row (meta or title link) */
+.home-grid .home-grid-date {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.home-grid-meta:hover .home-grid-date,
+.home-grid-meta:has(+ .home-grid-link:hover) .home-grid-date {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-grid .home-grid-date {
+    transition: none;
+  }
+}
+
 .home-grid-link {
   min-width: 0;
 }
