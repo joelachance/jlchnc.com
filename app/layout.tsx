@@ -4,14 +4,26 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { ThemeProviderWrapper } from './theme-provider';
-import { SiteHeader } from './site-header';
-import { ThemeToggle } from './theme-toggle';
+import { SiteFooter } from './site-footer';
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' });
 const berkeleyMono = localFont({
   src: '../public/fonts/BerkeleyMonoVariable.otf',
   variable: '--font-berkeley-mono'
+});
+const fkGroteskNeue = localFont({
+  src: [
+    { path: '../public/fonts/FKGroteskNeue-Light.otf', weight: '300', style: 'normal' },
+    { path: '../public/fonts/FKGroteskNeue-LightItalic.otf', weight: '300', style: 'italic' },
+    { path: '../public/fonts/FKGroteskNeue-Medium.otf', weight: '500', style: 'normal' },
+    { path: '../public/fonts/FKGroteskNeue-MediumItalic.otf', weight: '500', style: 'italic' }
+  ],
+  variable: '--font-fk-grotesk-neue'
+});
+const radwave = localFont({
+  src: '../public/fonts/Radwave.otf',
+  variable: '--font-radwave'
 });
 
 export const metadata: Metadata = {
@@ -38,18 +50,15 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${geistMono.className} bg-white antialiased tracking-tight page-fade-in min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-6 sm:p-8 md:ml-[5vw] dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200`}
+      className={`${geist.variable} ${geistMono.variable} ${berkeleyMono.variable} ${radwave.variable} ${fkGroteskNeue.variable} ${fkGroteskNeue.className} font-light bg-white antialiased tracking-tight page-fade-in min-h-screen flex flex-col justify-between pt-0 md:pt-8 p-6 sm:p-8 md:ml-[5vw] dark:bg-zinc-950 bg-white text-gray-900 dark:text-zinc-200`}
     >
-      <body>
+      <body className="flex flex-1 flex-col">
         <ThemeProviderWrapper>
-          <div>
-            <SiteHeader />
+          <div className="flex flex-1 flex-col">
             <main className="essay-main w-full self-start space-y-2">
               {children}
             </main>
-            <div className="mt-12 flex justify-start">
-              <ThemeToggle />
-            </div>
+            <SiteFooter />
             <Analytics />
           </div>
         </ThemeProviderWrapper>

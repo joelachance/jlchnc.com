@@ -57,9 +57,12 @@ function renderInline(text: string): ReactNode[] {
   return nodes;
 }
 
+function splitParagraphs(content: string): string[] {
+  return content.split(/\n\n+/).filter(Boolean);
+}
+
 export function PanelMarkdown({ content, footnotes = [] }: PanelMarkdownProps) {
-  const processed = replaceFootnoteRefs(content, footnotes);
-  const paragraphs = processed.split(/\n\n+/).filter(Boolean);
+  const paragraphs = splitParagraphs(replaceFootnoteRefs(content, footnotes));
 
   return (
     <>
@@ -70,23 +73,45 @@ export function PanelMarkdown({ content, footnotes = [] }: PanelMarkdownProps) {
   );
 }
 
-export function FootnoteList({ footnotes }: { footnotes: Footnote[] }) {
-  if (!footnotes.length) return null;
+/** Paragraphs with each paragraph's footnotes set beside it. */
+export function AnnotatedMarkdown({
+  content,
+  footnotes
+}: {
+  content: string;
+  footnotes: Footnote[];
+}) {
+  const paragraphs = splitParagraphs(replaceFootnoteRefs(content, footnotes));
 
   return (
-    <aside
-      className="thesis-panel-notes"
-      aria-label="Footnotes for this section"
-    >
-      <ol className="thesis-footnotes">
-        {footnotes.map((fn) => (
-          <li key={fn.id}>
-            <span className="thesis-fn-text">
-              <PanelMarkdown content={fn.content} />
-            </span>
-          </li>
-        ))}
-      </ol>
-    </aside>
+    <>
+      {paragraphs.map((paragraph, index) => {
+        const refs = new Set(
+          [...paragraph.matchAll(/\{\{fn:(\d+)\}\}/g)].map((m) => Number(m[1]))
+        );
+        const notes = footnotes.filter((fn) => refs.has(fn.index));
+
+        return (
+          <div key={index} className="thesis-para-row">
+            <p className="thesis-para-main">
+              {renderInline(paragraph.replace(/\n/g, ' '))}
+            </p>
+            {notes.length > 0 && (
+              <aside className="thesis-para-notes" aria-label="Footnotes">
+                <ol className="thesis-footnotes">
+                  {notes.map((fn) => (
+                    <li key={fn.id} data-n={fn.index}>
+                      <span className="thesis-fn-text">
+                        <PanelMarkdown content={fn.content} />
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </aside>
+            )}
+          </div>
+        );
+      })}
+    </>
   );
 }

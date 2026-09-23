@@ -16,8 +16,8 @@ export default function CodeReviewIsDeadPage() {
 
   return (
     <>
-      <h1 className="font-medium mb-0">{post.title}</h1>
-      <div className="home-grid-date mb-6">{post.date}</div>
+      <h1 className="font-medium pt-12 mb-0">{post.title}</h1>
+      <div className="post-date mb-6">{post.date}</div>
       <PostPanels sections={post.sections} />
     </>
   );
