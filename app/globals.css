@@ -288,6 +288,13 @@ table {
   max-width: var(--thesis-content-max-width);
 }
 
+/* Post titles and section headings: 5px above the 14px body text */
+.essay-main h1,
+.essay-main h2,
+.essay-main h3 {
+  font-size: 19px;
+}
+
 .essay-main:has(.thesis-section) {
   max-width: var(--content-max-width);
 }
@@ -443,9 +450,9 @@ table {
   }
 }
 
-.thesis-panel-heading {
+.essay-main .thesis-panel-heading {
   margin: 0 0 1.25rem;
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 400;
 }
 
